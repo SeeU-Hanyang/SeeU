@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>SeeU</title>
+ 
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- Bootstrap 3.3.4 -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Font Awesome Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme style -->
+    <link href="dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect.
+    -->
+    <link href="dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://apis.google.com/js/client:platform.js" async defer></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+	<br><br>
+	<div style ="text-align: center;">
+	<font size="7"><big><big><b>SeeU</b></big></big></font></div>
+	<div style="text-align: center;">
+	<div style="box-sizing: border-box; display: inline-block; width: auto; max-width: 480px; background-color: #FFFFFF; border: 2px solid #0361A8; border-radius: 5px; box-shadow: 0px 0px 8px #0361A8; margin: 50px auto auto;">
+	<div style="background: #0361A8; border-radius: 5px 5px 0px 0px; padding: 15px;"><span style="font-family: verdana,arial; color: #D4D4D4; font-size: 1.00em; font-weight:bold;">Enter your login and password</span></div>
+	<div style="background: ; padding: 15px">
+	<style type="text/css" scoped>
+	td { text-align:left; font-family: verdana,arial; color: #064073; font-size: 1.00em; }
+	input { border: 1px solid #CCCCCC; border-radius: 5px; color: #666666; display: inline-block; font-size: 1.00em;  padding: 5px; width: 100%; }
+	input[type="button"], input[type="reset"], input[type="submit"] { height: auto; width: auto; cursor: pointer; box-shadow: 0px 0px 5px #0361A8; float: right; text-align:right; margin-top: 10px; margin-left:7px;}
+	table.center { margin-left:auto; margin-right:auto; }
+	.error { font-family: verdana,arial; color: #D41313; font-size: 1.00em; }
+	</style>
+<form method="post" action="https://www.authpro.com/auth/deluxe/" name="aform" target="_top">
+<input type="hidden" name="action" value="login">
+<input type="hidden" name="hide" value="">
+<table class='center'>
+<tr><td>Login:</td><td><input type="text" name="login"></td></tr>
+<tr><td>Password:</td><td><input type="password" name="password"></td></tr>
+<tr><td>&nbsp;</td><td><input type="submit" value="Submit"></td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td colspan=2>Lost your username or password? Find it <a href="lookfor.html">here</a>!</td></tr>
+<tr><td colspan=2>Not member yet? Click <a href="register.html">here</a> to register.</td></tr>
+</table>
+</form>
+</div>
+
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
+<span id="signinButton">
+  <span
+    class="g-signin"
+    data-callback="signinCallback"
+    data-clientid="946618120596-uh4v2fdk2vqn0up6p682ajnc8t9t96l0.apps.googleusercontent.com"
+    data-cookiepolicy="single_host_origin"
+    data-requestvisibleactions="http://schemas.google.com/AddActivity"
+    data-scope="https://www.googleapis.com/auth/plus.login">
+  </span>
+</span>
+<script type="text/javascript">
+function signinCallback(authResult) {
+  if (authResult['access_token']) {
+    // 승인 성공
+    // 사용자가 승인되었으므로 로그인 버튼 숨김. 예:
+    document.getElementById('signinButton').setAttribute('style', 'display: none');
+  } else if (authResult['error']) {
+    // 오류가 발생했습니다.
+    // 가능한 오류 코드:
+    //   "access_denied" - 사용자가 앱에 대한 액세스 거부
+    //   "immediate_failed" - 사용자가 자동으로 로그인할 수 없음
+    // console.log('오류 발생: ' + authResult['error']);
+  }
+}
+</script>
+<script type="text/javascript">
+function disconnectUser(access_token) {
+  var revokeUrl = 'https://accounts.google.com/o/oauth2/revoke?token=' +
+      access_token;
+
+  // 비동기 GET 요청을 수행합니다.
+  $.ajax({
+    type: 'GET',
+    url: revokeUrl,
+    async: false,
+    contentType: "application/json",
+    dataType: 'jsonp',
+    success: function(nullResponse) {
+      // 사용자가 연결 해제되었으므로 작업을 수행합니다.
+      // 응답은 항상 정의되지 않음입니다.
+    },
+    error: function(e) {
+      // 오류 처리
+      // console.log(e);
+      // 실패한 경우 사용자가 수동으로 연결 해제하게 할 수 있습니다.
+      // https://plus.google.com/apps
+    }
+  });
+}
+// 버튼 클릭으로 연결 해제를 실행할 수 있습니다.
+$('#revokeButton').click(disconnectUser);
+</script>
+
+
+</div>
+</div>
+
+
+<script type="text/javascript">
+      (function() {
+       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+       po.src = 'https://apis.google.com/js/client:plusone.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+     })();
+</script>
+
+
+
+</body>
+
+
+</html>
