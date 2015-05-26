@@ -16,7 +16,7 @@ html {
   opacity: 1;
   background: rgba(0, 0, 0, 0.2);
   z-index: 1;
-}
+  }
 .logmod::after {
   clear: both;
   content: "";
@@ -30,6 +30,7 @@ html {
   border-radius: 4px;
   box-shadow: 0 0 18px rgba(0, 0, 0, 0.2);
   margin: 120px auto;
+  margin-top: 20px;
 }
 .logmod__close {
   display: block;
@@ -106,7 +107,7 @@ html {
 }
 .logmod__heading {
   text-align: center;
-  padding: 12px 0 12px 0;
+  padding: 12px 0 0 0;
 }
 .logmod__heading-subtitle {
   display: block;
