@@ -1,0 +1,64 @@
+
+
+table, td
+{
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+  	-moz-user-select: none;     /* Firefox all */
+  	-ms-user-select: none; 
+
+
+}
+
+.minutes30
+{
+	border: 1px solid white;
+	height: 1.5em;
+
+}	
+
+
+.even30{
+	background-color : #f1f1f1;
+}
+
+
+.ok-time{
+	background-color: rgb(100, 204, 214);
+}
+
+.fixed-ok-time{
+	background-color: rgb(39, 120, 143);
+}
+
+
+#plz-add-schedule{
+	width: 290px;
+}
+
+#info-title{
+	height: 38px;
+	text-align: center;
+	background-color: rgb(46, 85, 110);
+	padding-top: 11px;
+	color: white;
+	border-radius: 4px 4px 0px 0px;
+}
+
+
+#selected-users .inline-item .inline-item-close{
+	float: right;
+	font-size: 22px; 
+	z-index: 200; 
+	position: absolute; 
+	right: 5px; 
+	top: -5px;
+}
+
+
+.add_member_checkbox{
+	display: none;
+}
+
+#my_schedule_title{
+	padding-left: 50px;
+}
